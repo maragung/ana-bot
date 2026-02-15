@@ -1,0 +1,26 @@
+{
+  "name": "crypto-trading-bot",
+  "version": "1.0.0",
+  "description": "A decision-making bot for cryptocurrency trading based on technical analysis",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "trading",
+    "bot",
+    "technical-analysis",
+    "telegram"
+  ],
+  "author": "Trading Bot",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.13.5",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
