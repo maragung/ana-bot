@@ -1,8 +1,6 @@
 require('dotenv').config();
+const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
-
-// Mock TelegramBot since we can't install it properly
-const TelegramBot = null;
 
 // Load saved sessions
 let sessions = {};
@@ -16,20 +14,13 @@ try {
 }
 
 // Telegram Bot Configuration
-// We'll implement a mock bot for demonstration purposes since we can't install the package
-const bot = {
-  onText: (pattern, handler) => {
-    // Mock implementation
-    console.log(`Registered command pattern: ${pattern}`);
-  },
-  sendMessage: (chatId, message, options) => {
-    console.log(`Message to ${chatId}: ${message}`);
-    if(options) console.log('Options:', options);
-  },
-  on: (event, handler) => {
-    console.log(`Registered event: ${event}`);
-  }
-};
+const token = process.env.TELEGRAM_TOKEN;
+if (!token) {
+  console.error('TELEGRAM_TOKEN environment variable is required');
+  process.exit(1);
+}
+
+const bot = new TelegramBot(token, { polling: true });
 
 // Cryptocurrency symbols to monitor
 const SYMBOLS = ['BTC', 'ETH', 'SUI', 'AVAX', 'ASTER', 'MOVE', 'KAS', 'SOL', 'MINA', 'ZEC', 'XMR', 'HYPE'];
